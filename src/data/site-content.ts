@@ -26,6 +26,21 @@ export const siteInfo = {
   ageRange: "4 – 12 tuổi",
 };
 
+/** Nhãn khớp cột F trên Google Sheet */
+export const registrationCourses = [
+  { value: "hanh-trang", label: "Lớp Hành trang vào Lớp 1" },
+  { value: "tieng-anh", label: "Lớp Tiếng Anh giao tiếp" },
+  { value: "toan-tu-duy", label: "Lớp Toán tư duy" },
+  { value: "day-ve", label: "Lớp Dạy vẽ sáng tạo" },
+  { value: "tu-van", label: "Tư vấn lộ trình" },
+] as const;
+
+export const googleSheet = {
+  id: "13HqioIU-wurJxUc0c_3XwX6K2N0kuy8rWKcUQoWpxxo",
+  tabName: "Câu trả lời biểu mẫu 1",
+  url: "https://docs.google.com/spreadsheets/d/13HqioIU-wurJxUc0c_3XwX6K2N0kuy8rWKcUQoWpxxo/edit",
+};
+
 export const heroPrograms = [
   "🎒 Hành trang vào lớp 1",
   "🇬🇧 Tiếng Anh giao tiếp",

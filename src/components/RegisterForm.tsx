@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { registrationCourses } from "@/data/site-content";
 
 interface RegisterFormProps {
   id?: string;
@@ -13,13 +14,46 @@ export default function RegisterForm({
 }: RegisterFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 800));
-    setSubmitted(true);
-    setLoading(false);
+    setError(null);
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    const payload = {
+      studentName: String(data.get("studentName") || ""),
+      studentDob: String(data.get("studentDob") || ""),
+      parentName: String(data.get("parentName") || ""),
+      phone: String(data.get("phone") || ""),
+      course: String(data.get("course") || ""),
+      email: String(data.get("email") || ""),
+    };
+
+    try {
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        setError(result.error || "Gửi đăng ký thất bại. Vui lòng thử lại.");
+        return;
+      }
+
+      setSubmitted(true);
+      form.reset();
+    } catch {
+      setError("Không gửi được đăng ký. Kiểm tra mạng hoặc liên hệ qua Zalo.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -55,21 +89,29 @@ export default function RegisterForm({
         <input
           required
           type="text"
-          name="name"
-          placeholder="Họ và tên phụ huynh / học viên *"
+          name="studentName"
+          placeholder="Họ và tên học sinh *"
+          className="w-full rounded-xl border border-gray-200 px-4 py-3.5 text-sm outline-none transition focus:border-primary-light focus:ring-2 focus:ring-blue-100"
+        />
+        <input
+          required
+          type="date"
+          name="studentDob"
+          placeholder="Ngày sinh học sinh *"
+          className="w-full rounded-xl border border-gray-200 px-4 py-3.5 text-sm text-gray-700 outline-none transition focus:border-primary-light focus:ring-2 focus:ring-blue-100"
+        />
+        <input
+          required
+          type="text"
+          name="parentName"
+          placeholder="Họ và tên phụ huynh *"
           className="w-full rounded-xl border border-gray-200 px-4 py-3.5 text-sm outline-none transition focus:border-primary-light focus:ring-2 focus:ring-blue-100"
         />
         <input
           required
           type="tel"
           name="phone"
-          placeholder="Số điện thoại *"
-          className="w-full rounded-xl border border-gray-200 px-4 py-3.5 text-sm outline-none transition focus:border-primary-light focus:ring-2 focus:ring-blue-100"
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email (không bắt buộc)"
+          placeholder="Số điện thoại liên hệ (có Zalo) *"
           className="w-full rounded-xl border border-gray-200 px-4 py-3.5 text-sm outline-none transition focus:border-primary-light focus:ring-2 focus:ring-blue-100"
         />
         <select
@@ -79,20 +121,27 @@ export default function RegisterForm({
           className="w-full rounded-xl border border-gray-200 px-4 py-3.5 text-sm text-gray-700 outline-none transition focus:border-primary-light focus:ring-2 focus:ring-blue-100"
         >
           <option value="" disabled>
-            Chọn chương trình quan tâm *
+            Chọn lớp học/môn học muốn đăng ký *
           </option>
-          <option value="hanh-trang">Hành trang vào lớp 1</option>
-          <option value="tieng-anh">Tiếng Anh giao tiếp</option>
-          <option value="toan-tu-duy">Toán tư duy</option>
-          <option value="day-ve">Dạy vẽ sáng tạo</option>
-          <option value="tu-van">Tư vấn lộ trình</option>
+          {registrationCourses.map((course) => (
+            <option key={course.value} value={course.value}>
+              {course.label}
+            </option>
+          ))}
         </select>
-        <textarea
-          name="note"
-          rows={2}
-          placeholder="Ghi chú thêm (tuổi con, trình độ hiện tại...)"
-          className="w-full resize-none rounded-xl border border-gray-200 px-4 py-3.5 text-sm outline-none transition focus:border-primary-light focus:ring-2 focus:ring-blue-100"
+        <input
+          type="email"
+          name="email"
+          placeholder="Địa chỉ email (không bắt buộc)"
+          className="w-full rounded-xl border border-gray-200 px-4 py-3.5 text-sm outline-none transition focus:border-primary-light focus:ring-2 focus:ring-blue-100"
         />
+
+        {error && (
+          <p className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">
+            {error}
+          </p>
+        )}
+
         <button
           type="submit"
           disabled={loading}
