@@ -41,6 +41,27 @@ export const googleSheet = {
   url: "https://docs.google.com/spreadsheets/d/13HqioIU-wurJxUc0c_3XwX6K2N0kuy8rWKcUQoWpxxo/edit",
 };
 
+export const leadership = [
+  {
+    name: "Nguyễn Thị Duyến",
+    title: "Người đại diện pháp luật — Công ty TNHH Phát triển Giáo dục Nhật Đức",
+    image: "/team/nguyen-thi-duyen.png",
+    imagePosition: "center 15%",
+    quote:
+      "Chúng tôi xây dựng Trung tâm ngoại ngữ Nhật Đức với sứ mệnh bồi dưỡng kỹ năng toàn diện cho trẻ — từ Hành trang vào lớp 1, Tiếng Anh, Toán tư duy đến Dạy vẽ. Mỗi em được học đúng lứa tuổi, đúng năng lực và được đồng hành tận tâm.",
+    imageOnLeft: true,
+  },
+  {
+    name: "Đỗ Nhật Đức",
+    title: "Ban quản trị — Công ty TNHH Phát triển Giáo dục Nhật Đức",
+    image: "/team/do-nhat-duc.png",
+    imagePosition: "center center",
+    quote:
+      "Ban quản trị cam kết đầu tư liên tục vào chương trình học, đội ngũ giảng dạy và môi trường học tập để Nhật Đức trở thành địa chỉ giáo dục tin cậy, giúp thế hệ trẻ Quảng Bình phát triển bền vững.",
+    imageOnLeft: false,
+  },
+] as const;
+
 export const heroPrograms = [
   "🎒 Hành trang vào lớp 1",
   "🇬🇧 Tiếng Anh giao tiếp",

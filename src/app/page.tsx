@@ -1,10 +1,12 @@
 import { Globe } from "lucide-react";
 import ContactWidget from "@/components/ContactWidget";
+import LeadershipProfile from "@/components/LeadershipProfile";
 import RegisterForm from "@/components/RegisterForm";
 import {
   benefitsLeft,
   benefitsRight,
   heroPrograms,
+  leadership,
   packageItems,
   painPoints,
   showcaseItems,
@@ -179,30 +181,20 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Endorsement */}
+      {/* Leadership */}
       <section className="px-4 py-16 md:py-24">
-        <div className="mx-auto max-w-4xl">
-          <div className="grid items-center gap-8 md:grid-cols-2">
-            <div className="flex justify-center">
-              <div className="flex h-48 w-48 items-center justify-center rounded-full bg-gradient-to-br from-blue-100 to-blue-200 text-6xl">
-                👩‍💼
-              </div>
-            </div>
-            <div>
-              <h3 className="text-2xl font-extrabold text-primary">
-                {siteInfo.director.toUpperCase()}
-              </h3>
-              <p className="mt-1 font-semibold text-accent">
-                {siteInfo.directorTitle}
-              </p>
-              <blockquote className="mt-4 border-l-4 border-accent pl-4 italic leading-relaxed text-gray-700">
-                &quot;Chúng tôi xây dựng {siteInfo.name} với sứ mệnh bồi dưỡng
-                kỹ năng toàn diện cho trẻ — từ Hành trang vào lớp 1, Tiếng Anh,
-                Toán tư duy đến Dạy vẽ. Mỗi em được học đúng lứa tuổi, đúng
-                năng lực và được đồng hành tận tâm.&quot;
-              </blockquote>
-            </div>
-          </div>
+        <div className="mx-auto max-w-6xl space-y-16">
+          {leadership.map((person) => (
+            <LeadershipProfile
+              key={person.name}
+              name={person.name}
+              title={person.title}
+              image={person.image}
+              quote={person.quote}
+              imageOnLeft={person.imageOnLeft}
+              imagePosition={person.imagePosition}
+            />
+          ))}
         </div>
       </section>
 
