@@ -1,4 +1,5 @@
 import { Globe } from "lucide-react";
+import ContactWidget from "@/components/ContactWidget";
 import RegisterForm from "@/components/RegisterForm";
 import {
   benefitsLeft,
@@ -315,7 +316,7 @@ export default function LandingPage() {
               <div className="mt-8 space-y-3 text-blue-100">
                 <p>
                   <span className="font-semibold text-white">Hotline:</span>{" "}
-                  <a href={`tel:${siteInfo.phone.replace(/\s/g, "")}`} className="hover:text-white">
+                  <a href={`tel:${siteInfo.phoneRaw}`} className="hover:text-white">
                     {siteInfo.phone}
                   </a>
                 </p>
@@ -351,7 +352,7 @@ export default function LandingPage() {
       </footer>
 
       {/* Sticky mobile CTA */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 bg-white p-3 shadow-2xl sm:hidden">
+      <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 bg-white p-3 pr-20 shadow-2xl sm:hidden">
         <a
           href="#dang-ky"
           className="block w-full rounded-xl bg-accent py-3.5 text-center font-bold uppercase text-white"
@@ -359,6 +360,8 @@ export default function LandingPage() {
           Đăng ký học thử miễn phí
         </a>
       </div>
+
+      <ContactWidget />
     </main>
   );
 }

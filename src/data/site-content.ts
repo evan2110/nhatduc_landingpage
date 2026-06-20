@@ -4,6 +4,20 @@ export const siteInfo = {
   tagline: "Bồi dưỡng kỹ năng — Học thật vui, tiến bộ thật chắc",
   facebookUrl: "https://www.facebook.com/tnhhgiaoducnhatduc",
   phone: "0888 705 868",
+  /** Số gọi / tel: — bỏ khoảng trắng */
+  phoneRaw: "0888705868",
+  /** Messenger — chat trực tiếp với fanpage */
+  messengerUrl: "https://m.me/tnhhgiaoducnhatduc",
+  /**
+   * Zalo — hiện dùng cá nhân; khi có Zalo OA/page trung tâm, đổi type + url:
+   * personal: https://zalo.me/0888705868
+   * oa:       https://zalo.me/o/[oa-id-trung-tam]
+   */
+  zalo: {
+    type: "personal" as "personal" | "oa",
+    url: "https://zalo.me/0888705868",
+    label: "Chat qua Zalo",
+  },
   address:
     "Đội 1, Thôn Phú Hòa, Xã Phú Thủy, Huyện Lệ Thủy, Tỉnh Quảng Bình",
   director: "Nguyễn Thị Duyến",
