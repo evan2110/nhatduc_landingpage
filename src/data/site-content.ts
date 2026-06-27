@@ -20,6 +20,11 @@ export const siteInfo = {
   },
   address:
     "Đội 1, Thôn Phú Hòa, Xã Phú Thủy, Huyện Lệ Thủy, Tỉnh Quảng Bình",
+  /** Link Google Maps — chỉ đường */
+  mapsUrl: "https://maps.app.goo.gl/Q4waoq3vSBmHqQ4F8",
+  /** Embed iframe (tọa độ Công ty TNHH Phát triển Giáo dục Nhật Đức) */
+  mapsEmbedUrl:
+    "https://www.google.com/maps?q=17.1927276,106.7427857&hl=vi&z=17&output=embed",
   director: "Nguyễn Thị Duyến",
   directorTitle: "Người đại diện pháp luật — Công ty TNHH Phát triển Giáo dục Nhật Đức",
   followers: "1.500+",
@@ -62,12 +67,64 @@ export const leadership = [
   },
 ] as const;
 
+/** Ảnh hoạt động từ fanpage Nhật Đức */
+export const activityImages = [
+  {
+    src: "/activities/giao-vien-nuoc-ngoai.jpg",
+    alt: "Giáo viên nước ngoài cùng đội ngũ Nhật Đức",
+    caption: "Đội ngũ giảng dạy cùng giáo viên nước ngoài tại trung tâm",
+    featured: true,
+  },
+  {
+    src: "/activities/speaking-test-gv.jpg",
+    alt: "Học viên làm Speaking Test cùng giáo viên",
+    caption: "Buổi Speaking Test — luyện nói tiếng Anh thực tế",
+  },
+  {
+    src: "/activities/chung-chi-nhat-duc.jpg",
+    alt: "Học viên nhận chứng chỉ tại Nhật Đức",
+    caption: "Trao chứng chỉ cho học viên xuất sắc",
+  },
+  {
+    src: "/activities/chung-chi-tham-gia.jpg",
+    alt: "Học viên nhận Certificate of Participation",
+    caption: "Vinh danh học viên tham gia chương trình",
+  },
+  {
+    src: "/activities/lop-hoc-tieng-anh.jpg",
+    alt: "Lớp học tiếng Anh tại Nhật Đức",
+    caption: "Không khí lớp học sôi động, học viên hứng thú",
+  },
+  {
+    src: "/activities/hoat-dong-ve-trang-phuc.jpg",
+    alt: "Hoạt động học từ vựng trang phục",
+    caption: "Hoạt động học từ vựng qua hình vẽ sáng tạo",
+  },
+] as const;
+
 export const heroPrograms = [
   "🎒 Hành trang vào lớp 1",
   "🇬🇧 Tiếng Anh giao tiếp",
   "🧮 Toán tư duy",
   "🎨 Dạy vẽ sáng tạo",
 ];
+
+export const heroContent = {
+  headline: "TỪ BỠ NGỠ ĐẾN TỰ TIN",
+  ribbon: "Con sẵn sàng vào lớp 1 và tự tin giao tiếp tiếng Anh",
+  tagline:
+    "Trung tâm chuyên bồi dưỡng kỹ năng cho trẻ 4 – 12 tuổi tại Lệ Thủy, Quảng Bình",
+  image: "/activities/lop-hoc-tieng-anh.jpg",
+  imageAlt: "Học viên Nhật Đức trong lớp học tiếng Anh",
+};
+
+export const painPointsContent = {
+  title: "Có phải ba mẹ đã từng gặp những vấn đề sau",
+  centerLabel:
+    "NỖI LO CỦA BA MẸ VỀ VIỆC HỌC TẬP VÀ PHÁT TRIỂN CỦA CON",
+  image: "/pain-points/parents-concern.svg",
+  imageAlt: "Ba mẹ lo lắng về việc học của con",
+};
 
 export const painPoints = [
   {

@@ -1,14 +1,18 @@
 import { Globe } from "lucide-react";
+import ActivityGallery from "@/components/ActivityGallery";
 import ContactWidget from "@/components/ContactWidget";
+import FacebookPageEmbed from "@/components/FacebookPageEmbed";
+import HeroSection from "@/components/HeroSection";
 import LeadershipProfile from "@/components/LeadershipProfile";
+import LocationMap from "@/components/LocationMap";
+import PainPointsSection from "@/components/PainPointsSection";
 import RegisterForm from "@/components/RegisterForm";
 import {
+  activityImages,
   benefitsLeft,
   benefitsRight,
-  heroPrograms,
   leadership,
   packageItems,
-  painPoints,
   showcaseItems,
   siteInfo,
   testimonials,
@@ -17,96 +21,9 @@ import {
 export default function LandingPage() {
   return (
     <main className="overflow-x-hidden">
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 px-4 pb-20 pt-8 text-white md:pb-28 md:pt-12">
-        <div className="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full bg-orange-500/20 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-10 -left-10 h-60 w-60 rounded-full bg-blue-400/20 blur-3xl" />
+      <HeroSection />
 
-        <div className="relative mx-auto max-w-6xl">
-          <div className="mb-8 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 backdrop-blur">
-                <Globe className="h-6 w-6 text-orange-400" />
-              </div>
-              <span className="text-lg font-bold">Nhật Đức</span>
-            </div>
-            <a
-              href="#dang-ky"
-              className="hidden rounded-full bg-accent px-6 py-2.5 text-sm font-bold uppercase transition hover:bg-accent-hover sm:inline-block"
-            >
-              Đăng ký học thử
-            </a>
-          </div>
-
-          <div className="grid items-center gap-10 md:grid-cols-2">
-            <div>
-              <p className="mb-3 inline-block rounded-full bg-orange-500/20 px-4 py-1 text-sm font-medium text-orange-200">
-                📌 Trung tâm chuyên bồi dưỡng kỹ năng cho trẻ {siteInfo.ageRange}
-              </p>
-              <h1 className="text-3xl font-extrabold leading-tight md:text-4xl lg:text-5xl">
-                {siteInfo.name} — Hành trang vào lớp 1, Tiếng Anh, Toán tư duy
-                &amp; Dạy vẽ tại Lệ Thủy, Quảng Bình
-              </h1>
-              <p className="mt-5 text-lg text-blue-100">
-                Giải pháp giúp con sẵn sàng vào lớp 1, tự tin giao tiếp tiếng
-                Anh và phát triển tư duy — ba mẹ an tâm từng bước.
-              </p>
-              <a
-                href="#dang-ky"
-                className="mt-8 inline-block rounded-2xl bg-accent px-10 py-4 text-lg font-bold uppercase shadow-xl transition hover:bg-accent-hover hover:shadow-2xl"
-              >
-                Đăng ký học thử
-              </a>
-            </div>
-
-            <div className="relative hidden md:block">
-              <div className="animate-float rounded-3xl bg-white/10 p-8 backdrop-blur-sm">
-                <div className="grid grid-cols-2 gap-4">
-                  {heroPrograms.map((program) => (
-                    <div
-                      key={program}
-                      className="rounded-2xl bg-white/10 px-4 py-6 text-center text-base font-semibold"
-                    >
-                      {program}
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-6 text-center text-sm text-blue-200">
-                  {siteInfo.followers} phụ huynh theo dõi trên Facebook • Lệ
-                  Thủy, Quảng Bình
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pain Points */}
-      <section className="bg-surface-warm px-4 py-16 md:py-24">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="text-center text-2xl font-extrabold text-primary md:text-4xl">
-            Có phải ba mẹ đã từng gặp những vấn đề sau
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-gray-600">
-            Ba mẹ từng lo lắng khi thấy các bạn nhỏ cùng tuổi đã tự tin vào lớp
-            1, giao tiếp tiếng Anh và tư duy tốt hơn con mình?
-          </p>
-
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {painPoints.map((item) => (
-              <div
-                key={item.num}
-                className="group rounded-2xl border border-orange-100 bg-white p-6 shadow-sm transition hover:border-orange-300 hover:shadow-md"
-              >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-accent text-xl font-extrabold text-white">
-                  {item.num}
-                </div>
-                <p className="leading-relaxed text-gray-700">{item.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PainPointsSection />
 
       {/* Solutions */}
       <section className="px-4 py-16 md:py-24">
@@ -174,6 +91,30 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Activity Gallery */}
+      <section className="px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center">
+            <p className="text-sm font-bold uppercase tracking-widest text-accent">
+              {siteInfo.name}
+            </p>
+            <h2 className="mt-2 text-2xl font-extrabold text-primary md:text-4xl">
+              Hình ảnh hoạt động
+            </h2>
+            <p className="mx-auto mt-4 max-w-3xl text-gray-600">
+              Các buổi học, hoạt động ngoại khóa và trải nghiệm giao tiếp — đặc
+              biệt các hoạt động học tập, giảng dạy cùng giáo viên nước ngoài
+              giúp học viên tự tin luyện nói tiếng Anh.
+            </p>
+          </div>
+
+          <div className="mt-12 grid items-start gap-10 lg:grid-cols-2">
+            <ActivityGallery images={activityImages} />
+            <FacebookPageEmbed />
+          </div>
+        </div>
+      </section>
+
       {/* Form Section 1 */}
       <section className="bg-gradient-to-br from-blue-50 to-orange-50 px-4 py-16 md:py-24">
         <div className="mx-auto max-w-6xl">
@@ -196,19 +137,6 @@ export default function LandingPage() {
             />
           ))}
         </div>
-      </section>
-
-      {/* CTA Banner */}
-      <section className="bg-primary px-4 py-12 text-center text-white">
-        <h2 className="text-2xl font-extrabold md:text-3xl">
-          Cùng con chuẩn bị hành trang vững vàng vào lớp 1
-        </h2>
-        <a
-          href="#dang-ky-cuoi"
-          className="mt-6 inline-block rounded-2xl bg-accent px-10 py-4 font-bold uppercase transition hover:bg-accent-hover"
-        >
-          Đăng ký học thử
-        </a>
       </section>
 
       {/* Programs */}
@@ -293,6 +221,9 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Location Map */}
+      <LocationMap />
+
       {/* Footer + Form 2 */}
       <footer className="bg-gradient-to-br from-gray-900 to-blue-950 px-4 py-16 text-white">
         <div className="mx-auto max-w-6xl">
@@ -326,6 +257,17 @@ export default function LandingPage() {
                 <p>
                   <span className="font-semibold text-white">Địa chỉ:</span>{" "}
                   {siteInfo.address}
+                </p>
+                <p>
+                  <span className="font-semibold text-white">Bản đồ:</span>{" "}
+                  <a
+                    href={siteInfo.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white"
+                  >
+                    Xem trên Google Maps
+                  </a>
                 </p>
                 <p>
                   <span className="font-semibold text-white">Đơn vị:</span>{" "}
